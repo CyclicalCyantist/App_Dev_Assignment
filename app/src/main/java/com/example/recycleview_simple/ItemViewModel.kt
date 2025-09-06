@@ -25,14 +25,26 @@ class ItemViewModel : ViewModel() {
 
     val items: LiveData<List<Item>> = _items
 
+    private val _filteredItems = MutableLiveData<List<Item>>(_items.value)
+    val filteredItems: LiveData<List<Item>> = _filteredItems
+
+    fun filterByCategory(category: ItemCategories) {
+        _filteredItems.value = if (category == ItemCategories.ALL) {
+            _items.value
+        } else {
+            _items.value?.filter { it.category == category }
+        }
+    }
+
     fun toggleFav(item: Item) {
         viewModelScope.launch {
-            val currentList = _items.value.orEmpty()
+            val currentList = _filteredItems.value.orEmpty()
             val updatedList = currentList.map {
                 if (it.id == item.id) it.copy(isFavourite = !it.isFavourite)
                 else it
             }
-            _items.value = updatedList
+            _filteredItems.value = updatedList
+
         }
     }
 }
