@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.root)) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            view.setBackgroundColor(android.graphics.Color.TRANSPARENT)
             insets
         }
         if (savedInstanceState == null) {

@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#57E9A0"
+    android:background="@drawable/item_background"
     android:orientation="horizontal"
-    android:padding="12dp">
+    android:padding="12dp"
+    android:layout_marginTop="12dp"
+    android:layout_marginLeft="12dp"
+    android:layout_marginRight="12dp"
+    android:layout_marginBottom="0dp"
+    android:elevation="6dp">
 
     <ImageView
-        android:src="@drawable/ic_launcher_foreground"
+        android:src="@mipmap/ic_logo"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="@drawable/item_background2"
+        android:maxWidth="80dp"
+        android:maxHeight="80dp">
     </ImageView>
 
     <LinearLayout
@@ -22,9 +31,11 @@
             android:id="@+id/textName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="16dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="10dp"
+            android:layout_marginStart="16dp"
             android:text="Name"
-            android:textSize="14sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
@@ -32,6 +43,7 @@
             android:layout_marginStart="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingBottom="6dp"
             android:text="Category"/>
     </LinearLayout>
 
@@ -40,7 +52,8 @@
         android:padding="4dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="0dp"
+        android:layout_marginRight="6dp"
+        android:layout_gravity="center"
         android:background="@android:color/transparent"
         android:src="@drawable/one_star_outline_icon"
         />
