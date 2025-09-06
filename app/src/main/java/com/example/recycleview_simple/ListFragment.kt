@@ -35,13 +35,14 @@ class ListFragment : Fragment() {
 
         rv.layoutManager = GridLayoutManager(this.context, spanCount)
 
-        // Toggles favourites
         adapter = ItemAdapter(view.context,
+            // Open detail view
             onItemClick = { item ->
                 val intent = Intent(requireContext(), DetailView::class.java)
                 intent.putExtra("item_key", item)
                 startActivity(intent)
             },
+            // Toggles favourites
             onFavouriteClick = { item ->
                 vm.toggleFav(item)
             }
@@ -49,8 +50,8 @@ class ListFragment : Fragment() {
 
         rv.adapter = adapter
 
-        vm.items.observe(viewLifecycleOwner) { newPeople ->
-            adapter.submitList(newPeople)
+        vm.filteredItems.observe(viewLifecycleOwner) { newList ->
+            adapter.submitList(newList)
         }
     }
 }

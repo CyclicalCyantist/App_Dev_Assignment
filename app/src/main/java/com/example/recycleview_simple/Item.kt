@@ -6,21 +6,21 @@ import kotlinx.parcelize.Parcelize
 import java.util.UUID
 
 enum class ItemCategories{
+    ALL,
+    APPETISER,
     BREAKFAST,
+    DESSERT,
+    DRINK,
     MAIN,
     SIDE,
-    DESSERT,
     SNACK,
-    DRINK,
-    APPETISER,
-    OTHER
 }
 
 @Parcelize
 data class Item(
     val id: String = UUID.randomUUID().toString(),
     val name: String = "",
-    val category: ItemCategories = ItemCategories.OTHER,
+    val category: ItemCategories = ItemCategories.ALL,
     val description: String = "",
     val imageSrc: Int = R.drawable.star_on,
     val isFavourite: Boolean = false
