@@ -12,6 +12,7 @@ enum class ItemCategories{
     DESSERT,
     SNACK,
     DRINK,
+    APPETISER,
     OTHER
 }
 
