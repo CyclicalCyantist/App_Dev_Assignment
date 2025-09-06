@@ -38,7 +38,7 @@ class ItemViewModel : ViewModel() {
 
     fun toggleFav(item: Item) {
         viewModelScope.launch {
-            val currentList = _items.value.orEmpty()
+            val currentList = _filteredItems.value.orEmpty()
             val updatedList = currentList.map {
                 if (it.id == item.id) it.copy(isFavourite = !it.isFavourite)
                 else it
@@ -50,6 +50,8 @@ class ItemViewModel : ViewModel() {
                 if (it.id == item.id) it.copy(isFavourite = !it.isFavourite)
                 else it
             }
+            _filteredItems.value = updatedList
+
         }
     }
 }
