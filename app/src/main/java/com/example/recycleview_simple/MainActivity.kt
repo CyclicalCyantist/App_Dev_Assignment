@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
             view.setBackgroundColor(android.graphics.Color.TRANSPARENT)
             insets
         }
+
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.search_container, SearchFragment())
