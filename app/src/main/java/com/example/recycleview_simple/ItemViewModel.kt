@@ -8,9 +8,10 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
 class ItemViewModel : ViewModel() {
+    var currentCategory = ItemCategories.ALL
     private val _items = MutableLiveData<List<Item>>(
         listOf(
-            Item("1", "Caldo Verde", ItemCategories.SIDE, "Green soup"),
+            Item("1", "Caldo Verde", ItemCategories.SIDE, "Portuguese green soup"),
             Item("2", "Salisbury Steak", ItemCategories.MAIN, "Fake steak"),
             Item("3", "Pho", ItemCategories.MAIN, "Beef noodle soup"),
             Item("4", "Tuna Mornay", ItemCategories.MAIN, "Tuna casserole"),
@@ -29,6 +30,7 @@ class ItemViewModel : ViewModel() {
     val filteredItems: LiveData<List<Item>> = _filteredItems
 
     fun filterByCategory(category: ItemCategories) {
+        currentCategory = category
         _filteredItems.value = if (category == ItemCategories.ALL) {
             _items.value
         } else {
@@ -37,21 +39,17 @@ class ItemViewModel : ViewModel() {
     }
 
     fun toggleFav(item: Item) {
-        viewModelScope.launch {
-            val currentList = _filteredItems.value.orEmpty()
-            val updatedList = currentList.map {
-                if (it.id == item.id) it.copy(isFavourite = !it.isFavourite)
-                else it
-            }
-            _items.value = updatedList
+        val updatedList = _items.value.orEmpty().map {
+            if (it.id == item.id) it.copy(isFavourite = !it.isFavourite) else it
+        }
 
-            // keep filter applied after toggling
-            _filteredItems.value = _filteredItems.value?.map {
-                if (it.id == item.id) it.copy(isFavourite = !it.isFavourite)
-                else it
-            }
-            _filteredItems.value = updatedList
+        _items.value = updatedList
 
+        // Reapply the current filter
+        _filteredItems.value = if (currentCategory == ItemCategories.ALL) {
+            updatedList
+        } else {
+            updatedList.filter { it.category == currentCategory }
         }
     }
 }

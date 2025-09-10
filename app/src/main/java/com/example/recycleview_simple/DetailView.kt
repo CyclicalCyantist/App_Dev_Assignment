@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
 import android.widget.ImageView
 import android.widget.LinearLayout
+import androidx.activity.viewModels
+import kotlin.getValue
 
 class DetailView : AppCompatActivity() {
+    private val vm: ItemViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

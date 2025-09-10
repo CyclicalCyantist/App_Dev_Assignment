@@ -2,12 +2,16 @@ package com.example.recycleview_simple
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
-
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.activityViewModels
+import kotlin.getValue
 
 class MainActivity : AppCompatActivity() {
+    private val vm: ItemViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
