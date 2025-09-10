@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
 import android.widget.ImageView
 import android.widget.LinearLayout
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import kotlin.getValue
 
 class DetailView : AppCompatActivity() {
@@ -14,8 +17,17 @@ class DetailView : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_detail)
+        enableEdgeToEdge()
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.root2)) { view, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            view.setBackgroundColor(android.graphics.Color.TRANSPARENT)
+            insets
+        }
+
+
 
         val linearLayout = findViewById<LinearLayout>(R.id.mainLayout)
         linearLayout.orientation = if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
