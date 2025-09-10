@@ -7,14 +7,14 @@ import java.util.UUID
 
 enum class ItemCategories{
     ALL,
+    FAVOURITES,
     APPETISER,
     BREAKFAST,
     DESSERT,
     DRINK,
     MAIN,
     SIDE,
-    SNACK,
-    FAVOURITES
+    SNACK
 }
 
 @Parcelize

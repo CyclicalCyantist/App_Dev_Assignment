@@ -21,23 +21,19 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         savedInstanceState: Bundle?
     ): View? {
 
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_search, container, false)
 
         val spinner: Spinner = view.findViewById(R.id.categorySpinner)
 
-        // Get a list of category labels from your enum
         val categories = ItemCategories.entries.toTypedArray()
 
-        // Create an ArrayAdapter
         val adapter = ArrayAdapter(
             requireContext(),
-            android.R.layout.simple_spinner_item, // default spinner layout
+            android.R.layout.simple_spinner_item,
             categories
         )
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-        // Attach the adapter to the Spinner
         spinner.adapter = adapter
 
         spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {

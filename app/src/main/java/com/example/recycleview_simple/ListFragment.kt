@@ -21,7 +21,6 @@ class ListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_list, container, false)
 
         return view
@@ -30,19 +29,18 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val rv = view.findViewById<RecyclerView>(R.id.recyclerView)
 
-        // Determine span count based on orientation
         val spanCount = if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) 2 else 1
 
         rv.layoutManager = GridLayoutManager(this.context, spanCount)
 
         adapter = ItemAdapter(view.context,
-            // Open detail view
+
             onItemClick = { item ->
                 val intent = Intent(requireContext(), DetailView::class.java)
                 intent.putExtra("item_key", item)
                 startActivity(intent)
             },
-            // Toggles favourites
+
             onFavouriteClick = { item ->
                 vm.toggleFav(item)
             }

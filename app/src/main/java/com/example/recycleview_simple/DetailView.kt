@@ -2,6 +2,7 @@ package com.example.recycleview_simple
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
 import android.widget.ImageView
@@ -27,14 +28,13 @@ class DetailView : AppCompatActivity() {
             insets
         }
 
-
+        val backBtn = findViewById<ImageButton>(R.id.backBtn)
+        backBtn.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
 
         val linearLayout = findViewById<LinearLayout>(R.id.mainLayout)
-        linearLayout.orientation = if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            LinearLayout.HORIZONTAL
-        } else {
-            LinearLayout.VERTICAL
-        }
+        linearLayout.orientation = LinearLayout.HORIZONTAL
 
         val imageView = findViewById<ImageView>(R.id.itemImage)
         val itemName = findViewById<TextView>(R.id.nameTextView)
