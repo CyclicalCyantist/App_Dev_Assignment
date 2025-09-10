@@ -38,11 +38,13 @@ class DetailView : AppCompatActivity() {
 
         val imageView = findViewById<ImageView>(R.id.itemImage)
         val itemName = findViewById<TextView>(R.id.nameTextView)
+        val desc = findViewById<TextView>(R.id.detailedDescription)
 
         val item = intent.getParcelableExtra<Item>("item_key") ?: Item()
 
         imageView.setImageResource(item.imageBackground)
         itemName.text = item.name
+        desc.text = item.description
 
     }
 }
