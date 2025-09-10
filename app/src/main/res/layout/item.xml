@@ -14,8 +14,8 @@
     <ImageView
         android:id="@+id/itemImage"
         android:src="@mipmap/ic_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:background="@drawable/item_background2"
         android:maxWidth="80dp"
         android:maxHeight="80dp"
