@@ -1,6 +1,6 @@
 package com.example.recycleview_simple
 
-import android.R
+import android.R.mipmap
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 import java.util.UUID
@@ -22,7 +22,7 @@ data class Item(
     val name: String = "",
     val category: ItemCategories = ItemCategories.ALL,
     val description: String = "",
-    val imageSrc: Int = R.drawable.star_on,
+    val imageSrc: Int = R.mipmap.ic_logo,
     val isFavourite: Boolean = false
 ): Parcelable
 

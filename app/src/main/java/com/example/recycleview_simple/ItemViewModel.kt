@@ -8,7 +8,9 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
 class ItemViewModel : ViewModel() {
-    var currentCategory = ItemCategories.ALL
+    var currentCategory: ItemCategories = ItemCategories.ALL
+    var currentQuery: String = ""
+
     private val _items = MutableLiveData<List<Item>>(
         listOf(
             Item("1", "Caldo Verde", ItemCategories.SIDE, "Portuguese green soup"),
@@ -31,25 +33,41 @@ class ItemViewModel : ViewModel() {
 
     fun filterByCategory(category: ItemCategories) {
         currentCategory = category
-        _filteredItems.value = if (category == ItemCategories.ALL) {
-            _items.value
-        } else {
-            _items.value?.filter { it.category == category }
-        }
+        applyFilters()
     }
 
     fun toggleFav(item: Item) {
         val updatedList = _items.value.orEmpty().map {
             if (it.id == item.id) it.copy(isFavourite = !it.isFavourite) else it
         }
-
         _items.value = updatedList
+        applyFilters()
+    }
 
-        // Reapply the current filter
-        _filteredItems.value = if (currentCategory == ItemCategories.ALL) {
-            updatedList
+    fun search(query: String) {
+        currentQuery = query
+        applyFilters()
+    }
+
+    fun applyFilters(){
+        val baseList = _items.value.orEmpty()
+
+        val categoryFiltered = if (currentCategory == ItemCategories.ALL) {
+            baseList
         } else {
-            updatedList.filter { it.category == currentCategory }
+            baseList.filter { it.category == currentCategory }
         }
+
+        val searchFiltered = if (currentQuery.isBlank()) {
+            categoryFiltered
+        } else {
+            val lowerQuery = currentQuery.lowercase()
+            categoryFiltered.filter {
+                it.name.lowercase().contains(lowerQuery) ||
+                        it.description.lowercase().contains(lowerQuery)
+            }
+        }
+
+        _filteredItems.value = searchFiltered
     }
 }

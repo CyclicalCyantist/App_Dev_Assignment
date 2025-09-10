@@ -54,6 +54,20 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
 
+        val searchView: SearchView = view.findViewById(R.id.searchView)
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                vm.search(query.orEmpty())
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                vm.search(newText.orEmpty())
+                return true
+            }
+        })
+
         return view
     }
 }

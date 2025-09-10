@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -18,6 +19,7 @@ class ItemAdapter(
     class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textName: TextView = view.findViewById(R.id.textName)
         val textCategory: TextView = view.findViewById(R.id.textCategory)
+        val itemImage: ImageView = view.findViewById(R.id.itemImage)
         val btnFav: ImageButton = view.findViewById(R.id.btnFav)
     }
 
@@ -29,8 +31,11 @@ class ItemAdapter(
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = getItem(position)
+
+        // Load data into view holder
         holder.textName.text = item.name
         holder.textCategory.text = item.category.toString()
+        holder.itemImage.setImageResource(item.imageSrc)
 
         // Update the favourite button image based on isFavourite
         if (item.isFavourite) {
