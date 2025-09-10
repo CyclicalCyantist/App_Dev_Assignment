@@ -13,16 +13,16 @@ class ItemViewModel : ViewModel() {
 
     private val _items = MutableLiveData<List<Item>>(
         listOf(
-            Item("1", "Caldo Verde", ItemCategories.SIDE, "Portuguese green soup", imageSrc = R.drawable.caldo),
-            Item("2", "Salisbury Steak", ItemCategories.MAIN, "Fake steak", imageSrc = R.drawable.salisbury),
-            Item("3", "Pho", ItemCategories.MAIN, "Beef noodle soup", imageSrc = R.drawable.pho),
-            Item("4", "Tuna Mornay", ItemCategories.MAIN, "Tuna casserole", imageSrc = R.drawable.mornay),
-            Item("5", "Spaghetti Bolognese", ItemCategories.MAIN,"Meat, spaghetti and tomato based sauce", imageSrc = R.drawable.spaghetti),
-            Item("6", "Ice Cream", ItemCategories.DESSERT,"Frozen milk dessert treat", imageSrc = R.drawable.icecream),
-            Item("7","Bacon and Waffles", ItemCategories.BREAKFAST, "Waffles loaded with bacon and maple syrup", imageSrc = R.drawable.waffles),
-            Item("8", "Water", ItemCategories.DRINK, "Glass of water", imageSrc = R.drawable.water),
-            Item("9", "Arancini", ItemCategories.APPETISER, "Deep fried Italian rice balls", imageSrc = R.drawable.arancini),
-            Item("10","Toast", ItemCategories.SNACK, "Toasted bread", imageSrc = R.drawable.toast)
+            Item("1", "Caldo Verde", ItemCategories.SIDE, "Portuguese green soup", imageSrc = R.drawable.caldo, imageBackground = R.drawable.caldo_big),
+            Item("2", "Salisbury Steak", ItemCategories.MAIN, "Fake steak", imageSrc = R.drawable.salisbury, imageBackground = R.drawable.salisbury_big),
+            Item("3", "Pho", ItemCategories.MAIN, "Beef noodle soup", imageSrc = R.drawable.pho, imageBackground = R.drawable.pho_big),
+            Item("4", "Tuna Mornay", ItemCategories.MAIN, "Tuna casserole", imageSrc = R.drawable.mornay, imageBackground = R.drawable.mornay_big),
+            Item("5", "Spaghetti Bolognese", ItemCategories.MAIN,"Meat, spaghetti and tomato based sauce", imageSrc = R.drawable.spaghetti, imageBackground = R.drawable.spaghetti_big),
+            Item("6", "Ice Cream", ItemCategories.DESSERT,"Frozen milk dessert treat", imageSrc = R.drawable.icecream, imageBackground = R.drawable.icecream_big),
+            Item("7","Bacon and Waffles", ItemCategories.BREAKFAST, "Waffles loaded with bacon and maple syrup", imageSrc = R.drawable.waffles, imageBackground = R.drawable.waffles_big),
+            Item("8", "Water", ItemCategories.DRINK, "Glass of water", imageSrc = R.drawable.water, imageBackground = R.drawable.water_big),
+            Item("9", "Arancini", ItemCategories.APPETISER, "Deep fried Italian rice balls", imageSrc = R.drawable.arancini, imageBackground = R.drawable.arancini_big),
+            Item("10","Toast", ItemCategories.SNACK, "Toasted bread", imageSrc = R.drawable.toast, imageBackground = R.drawable.toast_big)
         )
     )
 

@@ -41,7 +41,7 @@ class DetailView : AppCompatActivity() {
 
         val item = intent.getParcelableExtra<Item>("item_key") ?: Item()
 
-        imageView.setImageResource(item.imageSrc)
+        imageView.setImageResource(item.imageBackground)
         itemName.text = item.name
 
     }
