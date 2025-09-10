@@ -14,6 +14,7 @@ enum class ItemCategories{
     MAIN,
     SIDE,
     SNACK,
+    FAVOURITES
 }
 
 @Parcelize
