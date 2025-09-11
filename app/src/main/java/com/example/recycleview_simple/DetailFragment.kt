@@ -1,7 +1,6 @@
 package com.example.recycleview_simple
 
 import android.os.Bundle
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,10 +10,8 @@ import android.widget.TextView
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ImageButton
-import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.activityViewModels
 import kotlin.getValue
 
 class DetailFragment : Fragment() {
