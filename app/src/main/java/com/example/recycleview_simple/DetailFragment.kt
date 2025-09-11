@@ -4,15 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import android.widget.TextView
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.ImageButton
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import kotlin.getValue
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 
 class DetailFragment : Fragment() {
     private val vm: ItemViewModel by activityViewModels()
@@ -21,52 +18,43 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-
-        val view = inflater.inflate(R.layout.fragment_detail, container, false)
-
-        return view
-    }
+    ): View = inflater.inflate(R.layout.fragment_detail, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         val linearLayout = view.findViewById<LinearLayout>(R.id.mainLayout)
         linearLayout.orientation = LinearLayout.HORIZONTAL
 
         val imageView = view.findViewById<ImageView>(R.id.itemImage)
         val itemName = view.findViewById<TextView>(R.id.nameTextView)
         val desc = view.findViewById<TextView>(R.id.detailedDescription)
-
         val favBtn = view.findViewById<ImageButton>(R.id.btnFav)
+        val backBtn = view.findViewById<ImageButton>(R.id.backBtn)
 
-        vm.selectedItemId.observe(viewLifecycleOwner) { id ->
-            val item = vm.getSelectedItem()
-            if (item != null) {
+        vm.selectedItemId.observe(viewLifecycleOwner) {
+            vm.getSelectedItem()?.let { item ->
                 imageView.setImageResource(item.imageBackground)
                 itemName.text = item.name
                 desc.text = item.description
-
-                favBtn.setImageResource(if (item.isFavourite) R.drawable.one_star_icon2 else R.drawable.one_star_outline_icon2)
+                favBtn.setImageResource(
+                    if (item.isFavourite) R.drawable.one_star_icon2
+                    else R.drawable.one_star_outline_icon2
+                )
             }
         }
 
         favBtn.setOnClickListener {
-            vm.getSelectedItem()?.let { vm.toggleFav(it) }
-            val item: Item? = vm.getSelectedItem()
-            if (item != null) {
-                if (item.isFavourite) {
-                    favBtn.setImageResource(R.drawable.one_star_icon2)
-                } else {
-                    favBtn.setImageResource(R.drawable.one_star_outline_icon2)
-                }
+            vm.getSelectedItem()?.let { item ->
+                vm.toggleFav(item)
+                favBtn.setImageResource(
+                    if (item.isFavourite) R.drawable.one_star_icon2
+                    else R.drawable.one_star_outline_icon2
+                )
             }
         }
 
-        val backBtn = view.findViewById<ImageButton>(R.id.backBtn)
         backBtn.setOnClickListener {
             vm.clearCurrentItem()
-            requireActivity().onBackPressedDispatcher.onBackPressed()
+            parentFragmentManager.popBackStack()
         }
     }
 }

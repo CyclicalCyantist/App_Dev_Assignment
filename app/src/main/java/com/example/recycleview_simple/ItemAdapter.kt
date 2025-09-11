@@ -32,12 +32,10 @@ class ItemAdapter(
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = getItem(position)
 
-        // Load data into view holder
         holder.textName.text = item.name
         holder.textCategory.text = item.category.toString()
         holder.itemImage.setImageResource(item.imageSrc)
 
-        // Update the favourite button image based on isFavourite
         if (item.isFavourite) {
             holder.btnFav.setImageResource(R.drawable.one_star_icon)
         } else {

@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- LEFT 50% -->
     <LinearLayout
         android:id="@+id/leftPane"
         android:layout_width="0dp"
@@ -14,13 +13,11 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <!-- Search on top -->
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/search_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <!-- List fills remaining space -->
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/list_container"
             android:layout_width="match_parent"
@@ -28,7 +25,6 @@
             android:layout_weight="1" />
     </LinearLayout>
 
-    <!-- RIGHT 50% (blank for now) -->
     <FrameLayout
         android:id="@+id/rightPane"
         android:layout_width="0dp"
