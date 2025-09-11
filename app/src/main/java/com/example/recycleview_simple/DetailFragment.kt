@@ -31,13 +31,6 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        ViewCompat.setOnApplyWindowInsetsListener(view.findViewById(R.id.root2)) { view, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            view.setBackgroundColor(android.graphics.Color.TRANSPARENT)
-            insets
-        }
-
         val linearLayout = view.findViewById<LinearLayout>(R.id.mainLayout)
         linearLayout.orientation = LinearLayout.HORIZONTAL
 

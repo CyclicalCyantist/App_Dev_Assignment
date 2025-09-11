@@ -28,7 +28,7 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val rv = view.findViewById<RecyclerView>(R.id.recyclerView)
 
-        val spanCount = if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) 2 else 1
+        val spanCount = if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) 1 else 1
 
         rv.layoutManager = GridLayoutManager(this.context, spanCount)
 
