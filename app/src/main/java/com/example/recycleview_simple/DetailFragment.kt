@@ -50,7 +50,7 @@ class DetailFragment : Fragment() {
         vm.selectedItemId.observe(viewLifecycleOwner) { id ->
             val item = vm.getSelectedItem()
             if (item != null) {
-                imageView.setImageResource(item.imageSrc)
+                imageView.setImageResource(item.imageBackground)
                 itemName.text = item.name
                 desc.text = item.description
 
