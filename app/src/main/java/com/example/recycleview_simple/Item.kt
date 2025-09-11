@@ -24,6 +24,6 @@ data class Item(
     val category: ItemCategories = ItemCategories.ALL,
     val description: String = "",
     val imageSrc: Int = R.mipmap.ic_logo,
-    val isFavourite: Boolean = false
+    var isFavourite: Boolean = false
 ): Parcelable
 

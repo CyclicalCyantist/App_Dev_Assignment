@@ -36,9 +36,13 @@ class ListFragment : Fragment() {
         adapter = ItemAdapter(view.context,
 
             onItemClick = { item ->
-                val intent = Intent(requireContext(), DetailView::class.java)
-                intent.putExtra("item_key", item)
-                startActivity(intent)
+                vm.setCurrentItem(item.id) // store the selected item in ViewModel
+
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.search_container, Fragment())
+                    .replace(R.id.list_container, DetailFragment())
+                    .addToBackStack(null)
+                    .commit()
             },
 
             onFavouriteClick = { item ->

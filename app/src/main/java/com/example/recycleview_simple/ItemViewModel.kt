@@ -31,6 +31,21 @@ class ItemViewModel : ViewModel() {
     private val _filteredItems = MutableLiveData<List<Item>>(_items.value)
     val filteredItems: LiveData<List<Item>> = _filteredItems
 
+    private val _selectedItemId = MutableLiveData<String?>()
+    val selectedItemId: LiveData<String?> = _selectedItemId
+
+    fun setCurrentItem(itemId: String) {
+        _selectedItemId.value = itemId
+    }
+
+    fun clearCurrentItem() {
+        _selectedItemId.value = null
+    }
+
+    fun getSelectedItem(): Item? {
+        return _items.value?.find { it.id == _selectedItemId.value }
+    }
+
     fun filterByCategory(category: ItemCategories) {
         currentCategory = category
         applyFilters()
