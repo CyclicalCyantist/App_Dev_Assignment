@@ -45,6 +45,8 @@ class DetailFragment : Fragment() {
         favBtn.setOnClickListener {
             vm.getSelectedItem()?.let { item ->
                 vm.toggleFav(item)
+            }
+            vm.getSelectedItem()?.let { item ->
                 favBtn.setImageResource(
                     if (item.isFavourite) R.drawable.one_star_icon2
                     else R.drawable.one_star_outline_icon2
