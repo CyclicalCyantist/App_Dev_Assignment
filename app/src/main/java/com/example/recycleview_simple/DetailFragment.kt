@@ -43,6 +43,7 @@ class DetailFragment : Fragment() {
 
         val imageView = view.findViewById<ImageView>(R.id.itemImage)
         val itemName = view.findViewById<TextView>(R.id.nameTextView)
+        val desc = view.findViewById<TextView>(R.id.detailedDescription)
 
         val favBtn = view.findViewById<ImageButton>(R.id.btnFav)
 
@@ -51,6 +52,8 @@ class DetailFragment : Fragment() {
             if (item != null) {
                 imageView.setImageResource(item.imageSrc)
                 itemName.text = item.name
+                desc.text = item.description
+
                 favBtn.setImageResource(if (item.isFavourite) R.drawable.one_star_icon2 else R.drawable.one_star_outline_icon2)
             }
         }
