@@ -22,7 +22,8 @@
             <ImageView
                 android:id="@+id/itemImage"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
+                android:maxHeight="400dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop" />
 
@@ -30,11 +31,23 @@
                 android:id="@+id/nameTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:lineSpacingExtra="4dp"
+                android:padding="12dp"/>
+
+            <TextView
+                android:id="@+id/detailedDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:textSize="18sp"
                 android:textColor="#000000"
                 android:lineSpacingExtra="4dp"
                 android:padding="12dp"/>
+
 
         </LinearLayout>
     </ScrollView>
@@ -72,6 +85,5 @@
             android:background="@android:color/transparent"
             android:src="@drawable/one_star_outline_icon2"/>
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
